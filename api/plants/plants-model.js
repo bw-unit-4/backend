@@ -1,6 +1,5 @@
 const db = require('../data/db-config');
 
-
 function getPlants() {
     return db('plants')
 }

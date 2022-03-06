@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const { checkUserExists } = require("./users-middleware");
 const bcrypt = require('bcryptjs');
 
-
 router.get("/plants", checkUserExists, (req, res, next) => {
+    
     const token = req.headers.authorization;
     const loggedUser = jwt.decode(token);
     Users.getUserPlants(loggedUser.subject)
@@ -16,6 +16,7 @@ router.get("/plants", checkUserExists, (req, res, next) => {
   });
 
   router.get("/", (req, res, next) => {
+
     const token = req.headers.authorization;
     const id = jwt.decode(token);
     Users.getById(id.subject)
@@ -26,6 +27,7 @@ router.get("/plants", checkUserExists, (req, res, next) => {
   });
   
   router.put("/", checkUserExists, (req, res, next) => {
+
     const token = req.headers.authorization;
     const id = jwt.decode(token);
 
@@ -42,9 +44,5 @@ router.get("/plants", checkUserExists, (req, res, next) => {
         res.status(500).json({ message: "Invalid change." });
       });
   });
-
-
-
-
 
 module.exports = router;

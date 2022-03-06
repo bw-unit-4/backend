@@ -29,6 +29,7 @@ async function addUser(newUser) {
 function update(user_id, changes) {
     return db('users').where('user_id', user_id).first().update(changes)
   }
+  
 module.exports = {
     get,
     getBy,

@@ -2,7 +2,6 @@ const router = require("express").Router();
 const Plants = require('./plants-model');
 const { noMissingInformation, checkUserIdExists } = require('./plants-middleware');
 
-
 router.get("/", (req, res, next) => {
     Plants.getPlants()
         .then(plantsData => {
