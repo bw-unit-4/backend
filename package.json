@@ -1,10 +1,20 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "backend data to validate front-end",
+  "description": "backend data to validate frontend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "migrateh": "heroku run knex migrate:latest -a buildweek-water-my-plants",
+    "rollbackh": "heroku run knex migrate:rollback -a buildweek-water-my-plants",
+    "databaseh": "heroku pg:psql -a buildweek-water-my-plants",
+    "seedh": "heroku run knex seed:run -a buildweek-water-my-plants",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "deploy": "git push heroku main"
   },
   "repository": {
     "type": "git",
@@ -15,5 +25,22 @@
   "bugs": {
     "url": "https://github.com/bw-unit-4/backend/issues"
   },
-  "homepage": "https://github.com/bw-unit-4/backend#readme"
+  "homepage": "https://github.com/bw-unit-4/backend#readme",
+  "dependencies": {
+    "@types/jest": "^27.4.1",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "eslint": "^8.10.0",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^1.0.3",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
+    "supertest": "^6.2.2"
+  }
 }
