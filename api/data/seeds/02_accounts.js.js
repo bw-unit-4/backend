@@ -1,13 +1,6 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
- */
-exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('table_name').del()
-  await knex('table_name').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
+
+exports.seed = function(knex) {
+  return knex('users').insert([
+    {username: 'Manny', password: '$2a$08$OJeyO4.9YRAwwn7um9rsCeNTcKELNzcMBqTANyF4.igISj.i0eUv6', phone_number: '2223334444'},
   ]);
 };
